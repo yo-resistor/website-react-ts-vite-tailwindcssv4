@@ -2,8 +2,8 @@ import "./Hero.css";
 // import { motion } from "framer-motion";
 import GitHubIcon from "./icons/GitHubIcon";
 import LinkedInIcon from "./icons/LinkedInIcon";
-// import GoogleScholarIcon from "./icons/GoogleScholarIcon";
-// import InstagramIcon from "./icons/InstagramIcon";
+import GoogleScholarIcon from "./icons/GoogleScholarIcon";
+import InstagramIcon from "./icons/InstagramIcon";
 
 const Hero = () => {
   return (
@@ -26,6 +26,22 @@ const Hero = () => {
         className="social-container"
       >
         <LinkedInIcon />
+      </a>
+      <a
+        href="https://scholar.google.com/citations?user=MdnAj8IAAAAJ&hl=en&oi=ao"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-container"
+      >
+        <GoogleScholarIcon />
+      </a>
+      <a
+        href="https://www.instagram.com/yunsik_ohm/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-container"
+      >
+        <InstagramIcon />
       </a>
     </div>
     //   <section className="w-full  flex flex-col justify-center min-h-screen px-10 md:px-40 sm:px-20 bg-white dark:bg-dark-bg-3">
