@@ -1,7 +1,7 @@
 import "./Hero.css";
 // import { motion } from "framer-motion";
 import GitHubIcon from "./icons/GitHubIcon";
-// import LinkedInIcon from "./icons/LinkedInIcon";
+import LinkedInIcon from "./icons/LinkedInIcon";
 // import GoogleScholarIcon from "./icons/GoogleScholarIcon";
 // import InstagramIcon from "./icons/InstagramIcon";
 
@@ -18,6 +18,14 @@ const Hero = () => {
         className="social-container"
       >
         <GitHubIcon />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/yohm/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="social-container"
+      >
+        <LinkedInIcon />
       </a>
     </div>
     //   <section className="w-full  flex flex-col justify-center min-h-screen px-10 md:px-40 sm:px-20 bg-white dark:bg-dark-bg-3">

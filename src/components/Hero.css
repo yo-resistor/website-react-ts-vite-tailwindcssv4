@@ -1,19 +1,16 @@
 .social-container {
-  height: 6em;
-  width: 6em;
-  padding: 1em;
-  transition: all;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
+  height: 4em;
+  width: 4em;
+  /* padding: 1em; */
 }
 
 .social-container:hover {
   transform: scale(1.1);
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
 }
 
 .social-icon:hover {
-  fill: #374151;
-  /* stroke: red; */
-  /* transition-duration: 300ms;
-  transition-timing-function: ease-in-out; */
+  fill: oklch(0.373 0.034 259.733);
+  transition-duration: 300ms;
 }
