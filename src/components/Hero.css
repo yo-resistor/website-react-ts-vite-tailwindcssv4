@@ -5,19 +5,21 @@
   /* padding: 1rem; */
   /* transition: transform 300ms; */
   /* transform: translateY(-1rem); */
-  animation: slidein-from-bottom 600ms ease-in-out 300ms 1 forwards;
+  animation: slidein-from-bottom 600ms ease-in-out 1300ms 1 forwards;
 }
 
 .social-container:hover {
+  animation-fill-mode: none;
+  opacity: 1;
   transform: scale(1.1);
   transition-duration: 300ms;
   transition-timing-function: ease-in-out;
 }
 
-.social-icon:hover {
+/* .social-icon:hover {
   fill: oklch(0.373 0.034 259.733);
   transition-duration: 300ms;
-}
+} */
 
 @keyframes slidein-from-bottom {
   from {
