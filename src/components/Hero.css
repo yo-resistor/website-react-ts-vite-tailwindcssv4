@@ -1,7 +1,11 @@
 .social-container {
-  height: 4em;
-  width: 4em;
-  /* padding: 1em; */
+  height: 4rem;
+  width: 4rem;
+  opacity: 0;
+  /* padding: 1rem; */
+  /* transition: transform 300ms; */
+  /* transform: translateY(-1rem); */
+  animation: slidein-from-bottom 600ms ease-in-out 300ms 1 forwards;
 }
 
 .social-container:hover {
@@ -13,4 +17,15 @@
 .social-icon:hover {
   fill: oklch(0.373 0.034 259.733);
   transition-duration: 300ms;
+}
+
+@keyframes slidein-from-bottom {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
