@@ -9,11 +9,12 @@
   --breakpoint-md: 48rem; /* small tablet device 768 px */
   --breakpoint-lg: 64rem; /* large tablet device 1024 px */
   /* desktop device */
-  --breakpoint-xl: 80rem; /* small desktop device 1280 px */
+  --breakpoint-xl: 80rem; /* small desktop device (hd) 1280 px */
   --breakpoint-2xl: 90rem; /* common desktop device 1440 px */
-  --breakpoint-3xl: 120rem; /* large desktop device 1920 px */
-  --breakpoint-2k: 160rem; /* 2k resolution desktop device 2560 px */
-  --breakpoint-4k: 240rem; /* 4k resolution desktop device 3840 px */
+  --breakpoint-3xl: 120rem; /* large desktop device (fhd) 1920 px */
+  --breakpoint-2k: 160rem; /* 2k resolution desktop device (qhd) 2560 px */
+  --breakpoint-4k: 240rem; /* 4k resolution desktop device (uhd) 3840 px */
+  --breakpoint-8k: 480rem; /* 8k resolution desktop device 7680 px */
 
   --color-amber-100: #ffecb3;
   --color-amber-200: #ffe082;
