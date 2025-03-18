@@ -29,7 +29,7 @@ const Hero = () => {
         <div>Engineer</div>
         <div>Writer</div>
       </h2>
-      <p className="hero-text mb-6 text-base text-neutral-800 dark:text-neutral-300">
+      <div className="hero-text mb-6 text-base text-neutral-800 dark:text-neutral-300">
         <div className="hidden max-sm:block max-sm:w-8/9">
           I’m passionate about applying machine learning to real-world problems.
           Currently, I’m developing a framework to optimize material composition
@@ -65,7 +65,7 @@ const Hero = () => {
         {/* TODO: Need to work on the texts for different display size. */}
         {/* TODO: Need to work on layout of the texts. */}
         {/* TODO: Need to work on social icons. */}
-      </p>
+      </div>
       <div className="flex items-center gap-x-4 sm:hidden">
         {socialLinks.map(({ href, icon }, index) => (
           <a

@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Enable dark mode using both the "dark" class and data-theme attribute */
+@custom-variant dark (&:where(.dark, [data-theme="dark"], .dark *));
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
 @theme {
   --breakpoint-*: initial;
   /* mobile device */
@@ -77,8 +82,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
     background-color: #f3f4f6;
   }
-}
+} */
