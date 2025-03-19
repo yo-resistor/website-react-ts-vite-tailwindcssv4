@@ -6,12 +6,13 @@ import "./index.css";
 import App from "./App.tsx";
 
 // Components
-import NavBar from "./components/NavBar.tsx";
+// import NavBar from "./components/NavBar.tsx";
+import ThemeToggle from "./components/ThemeToggle";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <NavBar />
+      <ThemeToggle />
       <Routes>
         <Route path="/" element={<App />} />
       </Routes>
