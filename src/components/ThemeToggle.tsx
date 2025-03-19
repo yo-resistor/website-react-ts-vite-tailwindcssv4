@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Moon, Sun } from "lucide-react";
-import "./ThemeToggle.css";
 
 export default function ThemeToggle() {
   // Function to get system preference theme
