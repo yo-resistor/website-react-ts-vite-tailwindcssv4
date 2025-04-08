@@ -65,37 +65,34 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 space-y-6">
-      {/* System Mode Status */}
-      {/* <div className="p-4 border rounded-lg bg-gray-200 dark:bg-gray-700">
-        <span className="text-lg font-bold">
-          {isSystemMode ? "System Mode: Active" : "System Mode: Off"}
-        </span>
-      </div> */}
-
-      {/* Current Theme Status */}
-      {/* <div className="p-4 border rounded-lg bg-gray-200 dark:bg-gray-700">
-        <span className="text-lg font-bold">
-          Current Theme: {theme === "system" ? getSystemPreference() : theme}
-        </span>
-      </div> */}
-
-      {/* Slider Bar for Light/Dark Mode */}
-      <div
-        className="relative w-20 h-10 rounded-full p-1 flex items-center bg-yellow-400 dark:bg-blue-900 cursor-pointer transition-colors duration-500"
-        onClick={toggleTheme}
-      >
+    <div>
+      <div className="min-sm:flex hidden items-center justify-center h-10 text-neutral-900 dark:text-white-bg-1 transition-colors duration-300 space-y-6">
+        {/* Slider Bar for Light/Dark Mode */}
         <div
-          className={`absolute w-8 h-8 rounded-full flex items-center justify-center shadow-md transform transition-transform duration-500 ${
-            isDarkMode ? "translate-x-0 bg-gray-800" : "translate-x-10 bg-white"
-          }`}
+          className="relative w-20 h-10 rounded-full p-1 flex items-center bg-yellow-400 dark:bg-blue-900 cursor-pointer transition-colors duration-500"
+          onClick={toggleTheme}
         >
-          {isDarkMode ? (
-            <Moon className="text-white" size={20} />
-          ) : (
-            <Sun className="text-yellow-500" size={20} />
-          )}
+          <div
+            className={`absolute w-8 h-8 rounded-full flex items-center justify-center shadow-md transform transition-transform duration-500 ${
+              isDarkMode
+                ? "translate-x-0 bg-dark-bg-3"
+                : "translate-x-10 bg-white-bg-1"
+            }`}
+          >
+            {isDarkMode ? (
+              <Moon className="dark:text-white-bg-1" size={20} />
+            ) : (
+              <Sun className="text-yellow-500" size={20} />
+            )}
+          </div>
         </div>
+      </div>
+      <div className="hidden max-sm:flex" onClick={toggleTheme}>
+        {isDarkMode ? (
+          <Moon className="dark:text-white-bg-1" size={20} />
+        ) : (
+          <Sun className="text-neutral-900" size={20} />
+        )}
       </div>
     </div>
   );
