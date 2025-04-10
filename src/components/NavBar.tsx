@@ -1,6 +1,7 @@
 // Navigation bar
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import logoDarkBG from "../assets/logo_dark_bg.svg";
 import logoWhiteBG from "../assets/logo_white_bg.svg";
@@ -29,8 +30,8 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-white/70 dark:bg-dark-bg-3 backdrop-blur-md shadow-md z-50 font-mono">
-        <div className="mx-auto flex items-center justify-between py-2 px-4 md:px-14 sm:px-10">
+      <nav className="fixed top-0 left-0 w-full bg-white-bg-1 dark:bg-dark-bg-3 backdrop-blur-md shadow-md z-50 font-mono">
+        <div className="mx-auto flex items-center justify-between py-2 px-4 md:px-14 sm:px-8">
           {/* Logo / Home Link */}
           <Link to="/">
             <img
@@ -48,11 +49,6 @@ const NavBar = () => {
           {/* Desktop Navigation */}
           <div className="hidden sm:flex items-center justify-between space-x-6">
             <NavLink to="/about" path={location.pathname} label="About" />
-            <NavLink
-              to="/experience"
-              path={location.pathname}
-              label="Experience"
-            />
             <NavLink to="/projects" path={location.pathname} label="Projects" />
             <NavLink to="/blog" path={location.pathname} label="Blog" />
             <NavLink to="/contact" path={location.pathname} label="Contact" />
@@ -63,10 +59,13 @@ const NavBar = () => {
           <div className="flex flex-row items-center sm:hidden gap-x-4">
             <ThemeToggle /> {/* Ensure it stays in Mobile Navbar */}
             <button
-              className="text-2xl pb-1.5 text-neutral-900 dark:text-white-bg-1"
+              className="text-2xl pb-1.5 font-extralight text-neutral-900 dark:text-white-bg-1"
               onClick={() => setIsOpen(true)}
             >
-              ☰
+              <Menu
+                className="text-neutral-900 dark:text-white-bg-1 pt-1.5"
+                size={26}
+              />
             </button>
           </div>
         </div>
@@ -90,15 +89,10 @@ const NavBar = () => {
             className="text-3xl self-end mb-4 text-gray-900 dark:text-white"
             onClick={() => setIsOpen(false)}
           >
-            ✕
+            <X size={20} />
           </button>
           <div className="flex flex-col space-y-6">
             <NavLink to="/about" path={location.pathname} label="About" />
-            <NavLink
-              to="/experience"
-              path={location.pathname}
-              label="Experience"
-            />
             <NavLink to="/projects" path={location.pathname} label="Projects" />
             <NavLink to="/blog" path={location.pathname} label="Blog" />
             <NavLink to="/contact" path={location.pathname} label="Contact" />
@@ -121,7 +115,7 @@ const NavLink = ({
 }) => (
   <Link
     to={to}
-    className={`text-xl font-medium ${
+    className={`text-sm font-medium ${
       path === to
         ? "text-blue-500 dark:text-blue-300 underline"
         : "text-gray-900 dark:text-white hover:text-blue-500"
@@ -136,8 +130,8 @@ export default NavBar;
 // DONE: Apply ThemeToggle to the NavBar.
 // DONE: Apply logo and other pages to the NavBar.
 // DONE: Apply shade for the NavBar as well -> Take a look at yunsikohm.com
-// TODO: Mobile friendly UI/UX.
+// DONE: Mobile friendly UI/UX.
 // DONE: Hamburger that contains other pages. ThemeToggle won't go inside. Maybe we can think about simplifying ThemeToggle as just one icon without the slider bar.
 // DONE: When Hamburger is activated, blur the background.
-// TODO: When users click/touch outside of the popped hamburger section or navigation bar, deactivate the popped hamburger.
+// DONE: When users click/touch outside of the popped hamburger section or navigation bar, deactivate the popped hamburger.
 // TODO: Fine change of font size of texts of nav bar.
