@@ -78,3 +78,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  @apply bg-white-bg-1 dark:bg-dark-bg-3;
+}
