@@ -83,7 +83,7 @@ const NavBar = () => {
       {isOpen && (
         <div
           ref={menuRef} // Attach ref for outside click detection
-          className="fixed top-0 right-0 w-3/4 h-screen bg-white dark:bg-dark-bg-3 sm:hidden shadow-lg transition-transform transform duration-300 ease-in-out z-50 p-6"
+          className="fixed top-0 right-0 w-1/2 h-screen bg-white dark:bg-dark-bg-3 sm:hidden shadow-lg transition-transform transform duration-300 ease-in-out z-50 p-6"
         >
           <button
             className="text-3xl self-end mb-4 text-gray-900 dark:text-white"
@@ -134,4 +134,5 @@ export default NavBar;
 // DONE: Hamburger that contains other pages. ThemeToggle won't go inside. Maybe we can think about simplifying ThemeToggle as just one icon without the slider bar.
 // DONE: When Hamburger is activated, blur the background.
 // DONE: When users click/touch outside of the popped hamburger section or navigation bar, deactivate the popped hamburger.
-// TODO: Fine change of font size of texts of nav bar.
+// DONE: Fine change of font size of texts of nav bar.
+// DONE: Lower the popup menu window and reduce the width and the height.
