@@ -7,7 +7,7 @@ const Contact = () => {
 
   return (
     <div className="max-[200px]:hidden w-full h-full min-h-screen flex flex-col justify-center bg-white-bg-1 dark:bg-dark-bg-3 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40">
-      <h2 className="mt-20 mb-4 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
+      <h2 className="mt-20 mb-6 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
         Let's
       </h2>
       <h1 className="mb-6 font-sans text-5xl max-sm:text-4xl font-bold text-blue-600 dark:text-blue-500">
@@ -60,7 +60,7 @@ const Contact = () => {
           </div>
           <button
             type="submit"
-            className="w-fit px-6 py-2 mt-2 text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md font-semibold transition-colors duration-300"
+            className="w-fit px-6 py-2 mt- text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 rounded-md font-semibold transition-colors duration-300"
             onClick={async (e) => {
               e.preventDefault();
 
