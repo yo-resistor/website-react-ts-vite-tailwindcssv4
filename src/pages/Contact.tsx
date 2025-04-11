@@ -120,7 +120,7 @@ const Contact = () => {
             ❌ Please complete all fields and provide a valid email address.
           </div>
         )}
-        <div className="mt-6 mb-20 text-sm text-neutral-600 dark:text-neutral-400">
+        <div className="mt-6 mb-10 text-sm text-neutral-600 dark:text-neutral-400">
           Prefer to copy the email instead?{" "}
           <span
             className="font-mono underline cursor-pointer"

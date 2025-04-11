@@ -12,6 +12,8 @@ import Projects from "./pages/Projects.tsx";
 
 // Components
 import NavBar from "./components/NavBar.tsx";
+// import SocialSide from "./components/SocialSide.tsx";
+// import EmailSide from "./components/EmailSide.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

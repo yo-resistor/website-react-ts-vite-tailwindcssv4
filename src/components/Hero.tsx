@@ -67,7 +67,7 @@ const Hero = () => {
         {/* DONE: Need to work on layout of the texts. */}
         {/* DONE: Need to work on social icons. */}
       </div>
-      <div className="flex items-center gap-x-4 sm:hidden">
+      <div className="flex items-center gap-x-4 sm:gap-x-6">
         {socialLinks.map(({ href, icon }, index) => (
           <a
             key={index}
