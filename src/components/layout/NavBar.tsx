@@ -2,9 +2,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
-import logoDarkBG from "../assets/logo_dark_bg.svg";
-import logoWhiteBG from "../assets/logo_white_bg.svg";
+import ThemeToggle from "../common/ThemeToggle";
+import logoDarkBG from "../../assets/logo_dark_bg.svg";
+import logoWhiteBG from "../../assets/logo_white_bg.svg";
 
 const NavBar = () => {
   const location = useLocation(); // Get the current route

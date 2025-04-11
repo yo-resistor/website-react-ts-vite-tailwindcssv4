@@ -1,4 +1,4 @@
-import "../Hero.css";
+import "../../components/Hero.css";
 
 const GitHubIcon = ({ className }: { className?: string }) => {
   return (

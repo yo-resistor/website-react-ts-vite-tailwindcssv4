@@ -1,7 +1,7 @@
-import GitHubIcon from "./icons/GitHubIcon";
-import GoogleScholarIcon from "./icons/GoogleScholarIcon";
-import InstagramIcon from "./icons/InstagramIcon";
-import LinkedInIcon from "./icons/LinkedInIcon";
+import GitHubIcon from "../icons/GitHubIcon";
+import GoogleScholarIcon from "../icons/GoogleScholarIcon";
+import InstagramIcon from "../icons/InstagramIcon";
+import LinkedInIcon from "../icons/LinkedInIcon";
 
 const SocialSide = () => {
   return (

@@ -9,9 +9,10 @@ import App from "./App.tsx";
 import Contact from "./pages/Contact.tsx";
 import About from "./pages/About.tsx";
 import Projects from "./pages/Projects.tsx";
+import NotFound from "./pages/NotFound";
 
 // Components
-import NavBar from "./components/NavBar.tsx";
+import NavBar from "./components/layout/NavBar.tsx";
 // import SocialSide from "./components/SocialSide.tsx";
 // import EmailSide from "./components/EmailSide.tsx";
 
@@ -25,7 +26,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/projects" element={<Projects />} />
         {/* <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} /> */}
-        // <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} /> {/* Catch-all */}
       </Routes>
     </BrowserRouter>
   </StrictMode>
