@@ -21,7 +21,7 @@ const Hero = () => {
       <h2 className="hero-hi mb-6 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
         Hi, my name is
       </h2>
-      <h1 className="hero-name mb-4 font-sans text-5xl max-sm:text-4xl font-bold text-blue-600 dark:text-blue-500">
+      <h1 className="hero-name mb-6 font-sans text-5xl max-sm:text-4xl font-bold text-blue-600 dark:text-blue-500">
         Yunsik Ohm
       </h1>
       <h2 className="hero-title mb-6 font-mono text-4xl max-sm:text-3xl font-bold text-neutral-900 dark:text-white-bg-1">
@@ -63,9 +63,9 @@ const Hero = () => {
           the journey—translating technical ideas into accessible stories that
           connect people, technology, and possibility.
         </div>
-        {/* TODO: Need to work on the texts for different display size. */}
-        {/* TODO: Need to work on layout of the texts. */}
-        {/* TODO: Need to work on social icons. */}
+        {/* DONE: Need to work on the texts for different display size. */}
+        {/* DONE: Need to work on layout of the texts. */}
+        {/* DONE: Need to work on social icons. */}
       </div>
       <div className="flex items-center gap-x-4 sm:hidden">
         {socialLinks.map(({ href, icon }, index) => (
@@ -86,4 +86,4 @@ const Hero = () => {
 
 export default Hero;
 
-// TODO: set different main texts for different screen width.
+// DONE: set different main texts for different screen width.
