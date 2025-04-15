@@ -10,6 +10,10 @@ import Contact from "./pages/Contact.tsx";
 import About from "./pages/About.tsx";
 import Projects from "./pages/Projects.tsx";
 import NotFound from "./pages/NotFound";
+// import BlogLayout from "./pages/BlogLayout.tsx";
+import Blog from "./pages/Blog.tsx";
+import BlogPost from "./pages/BlogPost.tsx";
+// import BlogList from "./pages/BlogList.tsx";
 
 // Components
 import NavBar from "./components/layout/NavBar.tsx";
@@ -24,10 +28,10 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
-        {/* <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:slug" element={<BlogPost />} /> */}
         <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} /> {/* Catch-all */}
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

@@ -1,0 +1,60 @@
+import CodeBlock from "../../../components/CodeBlock.tsx";
+
+---
+
+title: "How to Install PyTorch in a Miniconda Environment"
+date: "2025-03-03"
+tags: ["pytorch", "miniconda", "machine-learning", "python"]
+summary: "A step-by-step guide to installing PyTorch in a Miniconda environment."
+
+---
+
+# How to Install PyTorch in a Miniconda Environment
+
+Follow these steps to install PyTorch in a **Miniconda** environment.
+
+## Step 1: Create a Conda Environment
+
+<CodeBlock language="bash">
+  {`conda create --name pytorch-env python=3.10`}
+</CodeBlock>
+
+Then activate it:
+
+<CodeBlock language="bash">{`conda activate pytorch-env`}</CodeBlock>
+
+## Step 2: Install PyTorch
+
+For CUDA-enabled systems:
+
+<CodeBlock language="bash">
+  {`conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia`}
+</CodeBlock>
+
+For CPU-only installation:
+
+<CodeBlock language="bash">
+  {`conda install pytorch torchvision torchaudio cpuonly -c pytorch`}
+</CodeBlock>
+
+## Step 3: Verify Installation
+
+Run the following Python code:
+
+<CodeBlock language="python">
+  {`import torch
+print(torch.__version__)
+print(torch.cuda.is_available())`}
+</CodeBlock>
+
+If CUDA is available, it should print `True`.
+
+---
+
+## **Step 4: Run Your Website to Test**
+
+Save everything and start your development server:
+
+```sh
+npm run dev
+```
