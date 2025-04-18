@@ -1,16 +1,24 @@
-export const posts = [
+export const blogPosts = [
   {
-    slug: "first-post",
     title: "First Post",
-    description: "This is the first post of the blog.",
-    tags: ["intro"],
+    slug: "first-post",
+    description: "My first blog post.",
+    tags: ["general"],
     date: "2024-01-01",
   },
   {
+    title: "Tailwind CSS Guide",
+    slug: "tailwind-guide",
+    description: "A guide to Tailwind CSS v4.",
+    tags: ["frontend", "tailwind"],
+    date: "2024-01-10",
+  },
+  {
+    title: "How to Install PyTorch in a Miniconda Environment",
     slug: "install-pytorch-miniconda",
-    title: "Installing PyTorch with Miniconda",
-    description: "A step-by-step setup for PyTorch in a Conda env.",
-    tags: ["pytorch", "setup"],
-    date: "2024-02-15",
+    description:
+      "A step-by-step guide to installing PyTorch in a Miniconda environment.",
+    tags: ["machine learning", "pytorch"],
+    date: "2024-01-15",
   },
 ];
