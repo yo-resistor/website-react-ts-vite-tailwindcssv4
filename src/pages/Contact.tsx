@@ -19,10 +19,10 @@ const Contact = () => {
           out through the form or email, I’d love to connect.
         </div>
         <div className="hidden sm:flex w-full max-w-2xl">
-          Whether you’re building something exciting, exploring machine learning
-          applications, or just want to chat about code, research, writing, or
-          anything, I’d be glad to connect. Drop me a message through the form
-          below or reach out via email.
+          Whether you are building something exciting, exploring machine
+          learning applications, or just want to chat about code, research,
+          writing, or anything, I’d be glad to connect. Drop me a message
+          through the form below or reach out via email.
         </div>
       </div>
       <div className="w-full max-w-2xl">

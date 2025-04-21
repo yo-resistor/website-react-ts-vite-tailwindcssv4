@@ -44,7 +44,7 @@ const Blog = () => {
               </h2>
               <time
                 className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
-                datetime="2023-05-03"
+                dateTime="2023-05-03"
               >
                 <span
                   className="absolute inset-y-0 left-0 flex items-center"
@@ -71,9 +71,9 @@ const Blog = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="ml-1 h-4 w-4 stroke-current"
                 >
                   <polyline points="9 18 15 12 9 6"></polyline>
@@ -81,8 +81,8 @@ const Blog = () => {
               </div>
             </div>
             <time
-              className="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400"
-              datetime="2023-05-03"
+              className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400"
+              dateTime="2023-05-03"
             >
               May 3, 2023
             </time>
@@ -100,7 +100,7 @@ const Blog = () => {
               </h2>
               <time
                 className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
-                datetime="2023-03-31"
+                dateTime="2023-03-31"
               >
                 <span
                   className="absolute inset-y-0 left-0 flex items-center"
@@ -127,9 +127,9 @@ const Blog = () => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="ml-1 h-4 w-4 stroke-current"
                 >
                   <polyline points="9 18 15 12 9 6"></polyline>
@@ -137,8 +137,8 @@ const Blog = () => {
               </div>
             </div>
             <time
-              className="mt-1 hidden md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400"
-              datetime="2023-03-31"
+              className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400"
+              dateTime="2023-03-31"
             >
               March 31, 2023
             </time>

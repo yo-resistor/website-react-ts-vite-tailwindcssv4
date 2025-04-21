@@ -92,10 +92,30 @@ const NavBar = () => {
             <X size={20} />
           </button>
           <div className="flex flex-col space-y-6">
-            <NavLink to="/about" path={location.pathname} label="About" />
-            <NavLink to="/projects" path={location.pathname} label="Projects" />
-            <NavLink to="/blog" path={location.pathname} label="Blog" />
-            <NavLink to="/contact" path={location.pathname} label="Contact" />
+            <NavLink
+              to="/about"
+              path={location.pathname}
+              label="About"
+              onClick={() => setIsOpen(false)}
+            />
+            <NavLink
+              to="/projects"
+              path={location.pathname}
+              label="Projects"
+              onClick={() => setIsOpen(false)}
+            />
+            <NavLink
+              to="/blog"
+              path={location.pathname}
+              label="Blog"
+              onClick={() => setIsOpen(false)}
+            />
+            <NavLink
+              to="/contact"
+              path={location.pathname}
+              label="Contact"
+              onClick={() => setIsOpen(false)}
+            />
           </div>
         </div>
       )}
@@ -108,13 +128,16 @@ const NavLink = ({
   to,
   path,
   label,
+  onClick,
 }: {
   to: string;
   path: string;
   label: string;
+  onClick?: () => void;
 }) => (
   <Link
     to={to}
+    onClick={onClick}
     className={`text-sm font-medium ${
       path === to
         ? "text-blue-500 dark:text-blue-300 underline"
