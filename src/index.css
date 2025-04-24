@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 /* Enable dark mode using both the "dark" class and data-theme attribute */
 @custom-variant dark (&:where(.dark, [data-theme="dark"], .dark *));
 

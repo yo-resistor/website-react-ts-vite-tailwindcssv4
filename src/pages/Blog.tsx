@@ -226,3 +226,8 @@ export default Blog;
 
 //TODO: Adjust the margin of blog list box to make it looking similar to Tey's blog.
 //TODO: Fine tune of mobile responsive design for blog posts.
+
+//TODO: Follow Contact page layout.
+//TODO: Come up with the header and the paragraph.
+//TODO: Minimalistic and almost hidden looking search bar.
+//TODO: Refactor the blog post list based on the Tay's layout.
