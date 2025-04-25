@@ -70,7 +70,7 @@ const Blog = () => {
           </button>
         ))}
       </div>
-      <div className="mt-4 md:border-l-2 md:border-neutral-300 md:dark:border-neutral-500 md:pl-6 mb-20">
+      <div className="mt-4 md:border-l-2 md:border-neutral-300 md:dark:border-neutral-500 md:pl-6 mb-10">
         <div className="flex max-w-3xl flex-col space-y-10">
           {filteredPosts.map((post) => (
             <article className="md:grid md:grid-cols-4 md:items-baseline">
@@ -78,20 +78,20 @@ const Blog = () => {
                 key={post.slug}
                 className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.97] active:opacity-90"
               >
-                <h2 className="text-base font-semibold tracking-tight pl-3.5">
+                <h2 className="text-base font-semibold tracking-tight">
                   <div className="absolute -inset-y-6 -inset-x-4 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 rounded-2xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
                     className="group w-full py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 active:text-blue-500 dark:active:text-blue-600">
+                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-200 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 active:text-blue-500 dark:active:text-blue-600">
                       {post.title}
                     </span>
                   </Link>
                 </h2>
                 {/* Date for smaller window*/}
-                <time className="md:hidden relative z-10 inset-x-4 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <time className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   <span
                     className="absolute inset-y-0 left-0 flex items-center"
                     aria-hidden="true"
@@ -104,12 +104,12 @@ const Blog = () => {
                     day: "numeric",
                   })}
                 </time>
-                <p className="relative z-10 mt-2 pl-3.5 text-sm text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <p className="relative z-10 mt-2 text-sm text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   {post.description}
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline"
+                  className="relative z-10 mt-2 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline"
                 >
                   Read article →
                 </div>
