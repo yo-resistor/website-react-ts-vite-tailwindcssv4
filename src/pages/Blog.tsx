@@ -85,13 +85,13 @@ const Blog = () => {
                     className="group w-full py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-200 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 active:text-blue-500 dark:active:text-blue-600">
+                    <span className="relative z-10 md:px-4 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 group-active:text-blue-500 dark:group-active:text-blue-600">
                       {post.title}
                     </span>
                   </Link>
                 </h2>
                 {/* Date for smaller window*/}
-                <time className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <time className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800 group-active:text-neutral-800 dark:group-active:text-neutral-800">
                   <span
                     className="absolute inset-y-0 left-0 flex items-center"
                     aria-hidden="true"
@@ -104,12 +104,12 @@ const Blog = () => {
                     day: "numeric",
                   })}
                 </time>
-                <p className="relative z-10 mt-2 text-sm text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <p className="relative z-10 mt-2 text-sm md:px-4 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800 group-active:text-neutral-800 dark:group-active:text-neutral-800">
                   {post.description}
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-2 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline"
+                  className="relative z-10 mt-2 md:px-4 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline group-active:underline"
                 >
                   Read article →
                 </div>
