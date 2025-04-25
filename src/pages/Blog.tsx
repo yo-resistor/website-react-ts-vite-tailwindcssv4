@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogPosts } from "../data/posts.ts";
+import dayjs from "dayjs";
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -98,11 +99,7 @@ const Blog = () => {
                   >
                     <span className="h-4 w-0.5 rounded-full bg-neutral-400 dark:bg-neutral-500"></span>
                   </span>
-                  {new Date(post.date).toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {dayjs(post.date).format("MMMM D, YYYY")}
                 </time>
                 <p className="relative z-10 mt-2 text-sm md:px-4 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800 group-active:text-neutral-800 dark:group-active:text-neutral-800">
                   {post.description}
@@ -116,11 +113,7 @@ const Blog = () => {
               </div>
               {/* Date for larger window */}
               <time className="mt-1 hidden md:block relative z-10 order-first mb-3 items-center text-sm text-neutral-500 dark:text-neutral-400">
-                {new Date(post.date).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+                {dayjs(post.date).format("MMMM D, YYYY")}
               </time>
             </article>
           ))}
