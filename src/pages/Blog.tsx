@@ -43,7 +43,7 @@ const Blog = () => {
         placeholder="Search blog posts..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full px-4 py-2 mb-6 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
+        className="w-full px-4 py-2 mb-6 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
       />
       <div className="max-sm:hidden flex flex-wrap gap-3 mb-6">
         <button
@@ -76,22 +76,22 @@ const Blog = () => {
             <article className="md:grid md:grid-cols-4 md:items-baseline">
               <div
                 key={post.slug}
-                className="md:col-span-3 group relative flex flex-col items-start"
+                className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.9] active:opacity-90"
               >
                 <h2 className="text-base font-semibold tracking-tight pl-3.5">
-                  <div className="absolute -inset-y-6 -inset-x-4 z-0 dark:bg-neutral-100 bg-white opacity-0 transition group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 rounded-2xl"></div>
+                  <div className="absolute -inset-y-6 -inset-x-4 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 rounded-2xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
                     className="group w-full py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition dark:group-hover:text-blue-500 group-hover:text-blue-600">
+                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600">
                       {post.title}
                     </span>
                   </Link>
                 </h2>
                 {/* Date for smaller window*/}
-                <time className="md:hidden relative z-10 inset-x-4 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <time className="md:hidden relative z-10 inset-x-4 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   <span
                     className="absolute inset-y-0 left-0 flex items-center"
                     aria-hidden="true"
@@ -104,12 +104,12 @@ const Blog = () => {
                     day: "numeric",
                   })}
                 </time>
-                <p className="relative z-10 mt-2 pl-3.5 text-sm text-neutral-500 dark:text-neutral-400 transition group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
+                <p className="relative z-10 mt-2 pl-3.5 text-sm text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   {post.description}
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition group-hover:underline"
+                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline"
                 >
                   Read article →
                 </div>
