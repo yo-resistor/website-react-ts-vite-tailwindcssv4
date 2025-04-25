@@ -70,7 +70,7 @@ const Blog = () => {
           </button>
         ))}
       </div>
-      <div className="x-5 sm:mx-auto mt-16 sm:mt-20 md:border-l md:border-neutral-300 md:dark:border-neutral-600 md:pl-6">
+      <div className="mt-6 md:border-l md:border-neutral-300 md:dark:border-neutral-600 md:pl-6">
         <div className="flex max-w-3xl flex-col space-y-16">
           {filteredPosts.map((post) => (
             <article className="md:grid md:grid-cols-4 md:items-baseline">
@@ -78,11 +78,11 @@ const Blog = () => {
                 key={post.slug}
                 className="md:col-span-3 group relative flex flex-col items-start"
               >
-                <h2 className="text-base font-semibold tracking-tight text-zinc-800">
-                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
+                <h2 className="text-base font-semibold tracking-tight pl-3.5 text-zinc-800">
+                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="group w-full transition hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800 px-4 py-4 rounded-md"
+                    className="group w-full transition hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800 py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
                     <span className="relative z-10">{post.title}</span>
@@ -102,17 +102,17 @@ const Blog = () => {
                     day: "numeric",
                   })}
                 </time>
-                <p className="relative z-10 mt-2 text-sm text-zinc-600">
+                <p className="relative z-10 mt-2 pl-3.5 text-sm text-zinc-600">
                   {post.description}
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 group-hover:underline"
+                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 group-hover:underline"
                 >
                   Read article →
                 </div>
               </div>
-              <time className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400">
+              <time className="mt-1 hidden md:flex relative z-10 order-first mb-3 items-center text-sm text-zinc-400">
                 {new Date(post.date).toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "long",
