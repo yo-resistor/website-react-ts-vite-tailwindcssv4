@@ -76,7 +76,7 @@ const Blog = () => {
             <article className="md:grid md:grid-cols-4 md:items-baseline">
               <div
                 key={post.slug}
-                className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.9] active:opacity-90"
+                className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.97] active:opacity-90"
               >
                 <h2 className="text-base font-semibold tracking-tight pl-3.5">
                   <div className="absolute -inset-y-6 -inset-x-4 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 rounded-2xl"></div>
@@ -85,7 +85,7 @@ const Blog = () => {
                     className="group w-full py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600">
+                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 active:text-blue-500 dark:active:text-blue-600">
                       {post.title}
                     </span>
                   </Link>
