@@ -125,10 +125,10 @@ const Blog = () => {
 
 export default Blog;
 
-//TODO: Adjust the margin of blog list box to make it looking similar to Tey's blog.
-//TODO: Fine tune of mobile responsive design for blog posts.
+//DONE: Adjust the margin of blog list box to make it looking similar to Tey's blog.
+//DONE: Fine tune of mobile responsive design for blog posts.
 
-//TODO: Follow Contact page layout.
-//TODO: Come up with the header and the paragraph.
-//TODO: Minimalistic and almost hidden looking search bar.
-//TODO: Refactor the blog post list based on the
+//DONE: Follow Contact page layout.
+//DONE: Come up with the header and the paragraph.
+//DONE: Minimalistic and almost hidden looking search bar.
+//DONE: Refactor the blog post list based on the
