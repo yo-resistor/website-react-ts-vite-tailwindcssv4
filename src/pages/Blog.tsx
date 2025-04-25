@@ -79,12 +79,12 @@ const Blog = () => {
                 className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out group-active:scale-[0.97]"
               >
                 <h2 className="text-base font-semibold tracking-tight">
-                  <div className="absolute -inset-y-6 -inset-x-8 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 group-active:scale-90 max-md:group-active:scale-95 lg:group-active:scale-95 group-active:opacity-100 rounded-2xl"></div>
+                  <div className="absolute -inset-y-6 -inset-x-8 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 group-active:scale-90 max-md:group-active:scale-95 lg:group-active:scale-95 group-active:opacity-100 rounded-xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="group w-full py-4 rounded-md"
+                    className="group w-full py-4 rounded-xl"
                   >
-                    <span className="absolute -inset-y-6 -inset-x-4 z-20 md:-inset-x-6 sm:rounded-2xl"></span>
+                    <span className="absolute -inset-y-6 -inset-x-4 z-20 md:-inset-x-6 sm:rounded-xl"></span>
                     <span className="relative z-10 md:px-4 dark:text-neutral-300 text-neutral-800 transition duration-300 ease-in-out dark:group-hover:text-blue-500 group-hover:text-blue-600 group-active:text-blue-500 dark:group-active:text-blue-600">
                       {post.title}
                     </span>
