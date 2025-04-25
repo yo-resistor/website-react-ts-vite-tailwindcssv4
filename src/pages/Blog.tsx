@@ -19,7 +19,7 @@ const Blog = () => {
   });
 
   return (
-    <main className="max-[200px]:hidden max-w-2xl lg:max-w-5xl w-full h-full min-h-screen flex flex-col bg-white-bg-1 dark:bg-dark-bg-3 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40">
+    <main className="max-[200px]:hidden max-w-3xl lg:max-w-5xl w-full h-full min-h-screen flex flex-col bg-white-bg-1 dark:bg-dark-bg-3 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40">
       <h2 className="max-sm:mt-20 mt-30 mb-6 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
         Writing about
       </h2>
@@ -70,31 +70,33 @@ const Blog = () => {
           </button>
         ))}
       </div>
-      <div className="mt-6 md:border-l md:border-neutral-300 md:dark:border-neutral-600 md:pl-6">
-        <div className="flex max-w-3xl flex-col space-y-16">
+      <div className="mt-4 md:border-l-2 md:border-neutral-300 md:dark:border-neutral-500 md:pl-6 mb-20">
+        <div className="flex max-w-3xl flex-col space-y-10">
           {filteredPosts.map((post) => (
             <article className="md:grid md:grid-cols-4 md:items-baseline">
               <div
                 key={post.slug}
                 className="md:col-span-3 group relative flex flex-col items-start"
               >
-                <h2 className="text-base font-semibold tracking-tight pl-3.5 text-zinc-800">
-                  <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
+                <h2 className="text-base font-semibold tracking-tight pl-3.5">
+                  <div className="absolute -inset-y-6 -inset-x-4 z-0 dark:bg-neutral-100 bg-white opacity-0 transition group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 sm:-inset-x-6 rounded-2xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="group w-full transition hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800 py-4 rounded-md"
+                    className="group w-full py-4 rounded-md"
                   >
                     <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                    <span className="relative z-10">{post.title}</span>
+                    <span className="relative z-10 dark:text-neutral-300 text-neutral-800 transition dark:group-hover:text-blue-500 group-hover:text-blue-600">
+                      {post.title}
+                    </span>
                   </Link>
                 </h2>
-                {/* Date */}
-                <time className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5">
+                {/* Date for smaller window*/}
+                <time className="md:hidden relative z-10 inset-x-4 order-first mb-3 flex items-center text-sm pl-3.5 text-neutral-500 dark:text-neutral-400 transition group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   <span
                     className="absolute inset-y-0 left-0 flex items-center"
                     aria-hidden="true"
                   >
-                    <span className="h-4 w-0.5 rounded-full bg-zinc-200"></span>
+                    <span className="h-4 w-0.5 rounded-full bg-neutral-400 dark:bg-neutral-500"></span>
                   </span>
                   {new Date(post.date).toLocaleDateString(undefined, {
                     year: "numeric",
@@ -102,17 +104,18 @@ const Blog = () => {
                     day: "numeric",
                   })}
                 </time>
-                <p className="relative z-10 mt-2 pl-3.5 text-sm text-zinc-600">
+                <p className="relative z-10 mt-2 pl-3.5 text-sm text-neutral-500 dark:text-neutral-400 transition group-hover:text-neutral-800 dark:group-hover:text-neutral-800">
                   {post.description}
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 group-hover:underline"
+                  className="relative z-10 mt-2 pl-3.5 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition group-hover:underline"
                 >
                   Read article →
                 </div>
               </div>
-              <time className="mt-1 hidden md:flex relative z-10 order-first mb-3 items-center text-sm text-zinc-400">
+              {/* Date for larger window */}
+              <time className="mt-1 hidden md:block relative z-10 order-first mb-3 items-center text-sm text-neutral-500 dark:text-neutral-400">
                 {new Date(post.date).toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "long",
@@ -122,107 +125,6 @@ const Blog = () => {
             </article>
           ))}
         </div>
-      </div>
-      {/* //////////////////////////////////// */}
-      <div className="mx-5 sm:mx-auto mt-16 sm:mt-20 md:border-l md:border-zinc-100 md:pl-6">
-        <div className="flex max-w-3xl flex-col space-y-16">
-          <article className="md:grid md:grid-cols-4 md:items-baseline">
-            <div className="md:col-span-3 group relative flex flex-col items-start">
-              <h2 className="text-base font-semibold tracking-tight text-zinc-800">
-                <div className="absolute -inset-y-6 -inset-x-4 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl"></div>
-                <a href="/blog/chatgpt-plugin">
-                  <span className="absolute -inset-y-6 -inset-x-4 z-20 sm:-inset-x-6 sm:rounded-2xl"></span>
-                  <span className="relative z-10">
-                    How to Build a ChatGPT Plugin with Next.js in 2023
-                  </span>
-                </a>
-              </h2>
-              <time
-                className="md:hidden relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400 pl-3.5"
-                dateTime="2023-05-03"
-              >
-                <span
-                  className="absolute inset-y-0 left-0 flex items-center"
-                  aria-hidden="true"
-                >
-                  <span className="h-4 w-0.5 rounded-full bg-zinc-200"></span>
-                </span>
-                May 3, 2023
-              </time>
-              <p className="relative z-10 mt-2 text-sm text-zinc-600">
-                When OpenAI announced ChatGPT Plugins in March, it took the
-                world by storm. Here's a step-by-step tutorial of how to build
-                your own ChatGPT Plugin with Next.js &amp; Vercel.
-              </p>
-              <div
-                aria-hidden="true"
-                className="relative z-10 mt-4 flex items-center text-sm font-medium text-teal-500"
-              >
-                Read article
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="ml-1 h-4 w-4 stroke-current"
-                >
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
-              </div>
-            </div>
-            <time
-              className="mt-1 md:block relative z-10 order-first mb-3 flex items-center text-sm text-zinc-400"
-              dateTime="2023-05-03"
-            >
-              May 13, 2023
-            </time>
-          </article>
-        </div>
-      </div>
-      {/* //////////////////////////////////// */}
-      <div
-        id="blog"
-        className="mt-30 mb-10 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40"
-      >
-        {/* //////////////////////////////////// */}
-        <article className="relative pl-4 sm:pl-8 border-l border-gray-300 dark:border-gray-600 space-y-16">
-          {filteredPosts.map((post) => (
-            <li
-              key={post.slug}
-              className="relative flex flex-col sm:flex-row sm:items-start sm:gap-8"
-            >
-              {/* Date */}
-              <time className="text-sm text-gray-400 whitespace-nowrap mb-4 sm:mb-0 sm:min-w-[9rem] sm:pt-2">
-                {new Date(post.date).toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </time>
-
-              {/* Post content */}
-              <Link
-                to={`/blog/${post.slug}`}
-                className="group w-full transition hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-800 px-4 py-4 rounded-md"
-              >
-                <h2 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-500">
-                  {post.title}
-                </h2>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                  {post.description}
-                </p>
-                <p className="mt-3 text-sm font-medium text-green-600 group-hover:underline">
-                  Read article →
-                </p>
-              </Link>
-            </li>
-          ))}
-        </article>
       </div>
     </main>
   );
