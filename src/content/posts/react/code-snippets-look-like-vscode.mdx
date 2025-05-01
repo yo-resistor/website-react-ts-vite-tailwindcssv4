@@ -1,0 +1,27 @@
+---
+title: "Make Your Code Snippets Look Like VSCode"
+description: "A quick guide to making your blog code blocks feel like you're still in your favorite editor."
+date: "2024-05-02"
+tags: ["code", "styling", "syntax highlighting"]
+---
+
+Have you ever wanted your code blocks in blog posts to look just like they do in VS Code? You're not alone — and now it's easier than ever to achieve that look!
+
+Here’s what we’ll use:
+
+- [`react-syntax-highlighter`](https://github.com/react-syntax-highlighter/react-syntax-highlighter)
+- The `vscDarkPlus` Prism theme
+- Some TailwindCSS padding and rounding for aesthetics
+
+## The CodeBlock Component
+
+We created a `CodeBlock.tsx` that uses the VS Code–like `vscDarkPlus` theme. Here's a sample usage:
+
+```tsx
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+<SyntaxHighlighter language="tsx" style={vscDarkPlus}>
+  {code}
+</SyntaxHighlighter>;
+```
