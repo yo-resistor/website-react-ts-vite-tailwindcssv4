@@ -5,6 +5,6 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["vite/client", "./src/types/mdx"]
+    "types": ["vite/client", "react", "react-dom"]
   }
 }

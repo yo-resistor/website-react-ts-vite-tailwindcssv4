@@ -1,167 +1,72 @@
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-// interface CodeBlockProps {
-//   children: string;
-//   language?: string;
-// }
-
-// const CodeBlock = ({ children, language = "bash" }: CodeBlockProps) => {
-//   return (
-//     <SyntaxHighlighter language={language} style={dracula}>
-//       {children.trim()}
-//     </SyntaxHighlighter>
-//   );
-// };
-
-// export default CodeBlock;
-
-//////////Not working
-// import React, { useEffect } from "react";
-// import Prism from "prismjs";
-// import "prismjs/components/prism-python"; // import the language you need
-// import "prismjs/themes/prism-tomorrow.css"; // import the theme
-// import "prismjs/components/prism-python";
-// import "prismjs/components/prism-bash";
-
-// interface CodeBlockProps {
-//   code: string;
-//   language: string;
-// }
-
-// const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => {
-//   useEffect(() => {
-//     Prism.highlightAll();
-//   }, []);
-
-//   return (
-//     <pre
-//       className={`language-${language} rounded-lg p-4 overflow-auto text-sm`}
-//     >
-//       <code className={`language-${language}`}>{code}</code>
-//     </pre>
-//   );
-// };
-
 // src/components/CodeBlock.tsx
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism"; // Closer to VSCode theme
-
-// type CodeBlockProps = {
-//   children: string;
-//   language?: string;
-// };
-
-// const CodeBlock = ({ children, language = "bash" }: CodeBlockProps) => {
-//   return (
-//     <SyntaxHighlighter
-//       language={language}
-//       style={vscDarkPlus} // ✅ VSCode Prettier vibe
-//       showLineNumbers // ✅ Show line numbers like real code editors
-//       customStyle={{
-//         padding: "1.5rem",
-//         borderRadius: "10px",
-//         fontSize: "0.9rem",
-//         backgroundColor: "#1e1e1e", // VSCode dark background
-//         lineHeight: "1.6",
-//       }}
-//       lineNumberStyle={{
-//         color: "#6d6d6d",
-//         fontSize: "0.75rem",
-//         marginRight: "10px",
-//       }}
-//       wrapLongLines // ✅ Prevent horizontal scrolling on mobile
-//     >
-//       {String(children).trim()}
-//     </SyntaxHighlighter>
-//   );
-// };
-
-// export default CodeBlock;
-/////Working fine
-// import React from "react";
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-
-// export type CodeBlockProps = {
-//   children: string;
-//   className?: string;
-// };
-
-// const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
-//   const language = className?.replace("language-", "") || "text";
-
-//   return (
-//     <SyntaxHighlighter language={language} style={vscDarkPlus} PreTag="div">
-//       {children}
-//     </SyntaxHighlighter>
-//   );
-// };
-
-// export default CodeBlock;
-
-//////////// ALSO works well
-// src/components/CodeBlock.tsx
-// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-// import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-// import React from "react";
-
-// type CodeBlockProps = {
-//   children: string | string[];
-//   className?: string;
-// };
-
-// const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
-//   const language = className?.replace("language-", "") || "bash";
-
-//   return (
-//     <div className="my-6 overflow-x-auto rounded-md bg-[#282c34] shadow-md">
-//       <SyntaxHighlighter
-//         language={language}
-//         style={oneDark}
-//         wrapLines={true}
-//         customStyle={{
-//           background: "transparent",
-//           padding: "1rem",
-//           fontSize: "0.9rem",
-//         }}
-//       >
-//         {Array.isArray(children) ? children.join("") : children}
-//       </SyntaxHighlighter>
-//     </div>
-//   );
-// };
-
-// export default CodeBlock;
-
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import React, { ReactNode } from "react";
 
 interface CodeBlockProps {
-  children: string | string[];
-  className?: string;
+  children: ReactNode;
+  className?: string; // className might be passed by MDX for language (e.g., "language-javascript")
 }
 
-const CodeBlock = ({ children, className = "" }: CodeBlockProps) => {
-  const language = className.replace("language-", "") || "bash";
-  const code = typeof children === "string" ? children : children.join("\n");
+const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
+  // Attempt to extract language from className e.g. "language-javascript" -> "javascript"
+  const language = className?.replace(/language-/, "");
+
+  // Base classes for the container
+  const containerClasses = [
+    "my-8", // Increased vertical margin
+    "rounded-lg", // Slightly larger rounding
+    "overflow-hidden",
+    "relative",
+    "group",
+    "border", // Add a border
+    "shadow-md", // Add a subtle shadow
+    // Light mode styles
+    "bg-slate-50", // Light background
+    "text-slate-800", // Light mode text
+    "border-slate-200", // Light mode border
+    // Dark mode styles
+    "dark:bg-slate-800", // Darker, slightly blue-ish background
+    "dark:text-slate-200", // Dark mode text
+    "dark:border-slate-700", // Dark mode border
+  ].join(" ");
+
+  const preClasses = [
+    "p-6", // Increased padding
+    "text-sm",
+    "overflow-x-auto",
+    "font-mono", // Ensure monospaced font
+  ].join(" ");
+
+  const languageIndicatorClasses = [
+    "absolute",
+    "top-3", // Adjusted position
+    "right-3", // Adjusted position
+    "text-xs",
+    "font-semibold",
+    "px-2.5", // Slightly more padding
+    "py-1",
+    "rounded-md", // Rounded corners for the indicator
+    "opacity-0",
+    "group-hover:opacity-100",
+    "transition-all",
+    "duration-200",
+    // Light mode indicator
+    "bg-slate-200",
+    "text-slate-600",
+    // Dark mode indicator
+    "dark:bg-slate-700",
+    "dark:text-slate-300",
+  ].join(" ");
 
   return (
-    <SyntaxHighlighter
-      language={language}
-      style={vscDarkPlus}
-      customStyle={{
-        fontSize: "0.9rem",
-        borderRadius: "8px",
-        padding: "1rem",
-        backgroundColor: "#1e1e1e",
-      }}
-      wrapLongLines
-    >
-      {code}
-    </SyntaxHighlighter>
+    <div className={containerClasses}>
+      {language && (
+        <div className={languageIndicatorClasses}>{language.toUpperCase()}</div>
+      )}
+      <pre className={preClasses}>
+        <code>{children}</code>
+      </pre>
+    </div>
   );
 };
 
 export default CodeBlock;
-//TODO: Select one-dark and one-light in https://react-syntax-highlighter.github.io/react-syntax-highlighter/demo/prism.html for theme.

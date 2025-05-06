@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { blogPosts } from "../data/posts.ts";
+import { posts as blogPosts, Post } from "../data/posts.ts"; // Import Post type and alias posts
 import dayjs from "dayjs";
 
 const Blog = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const allTags = Array.from(
-    new Set(blogPosts.flatMap((post) => post.tags))
+    new Set(blogPosts.flatMap((post: Post) => post.tags)) // Add Post type
   ).sort();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const filteredPosts = blogPosts.filter((post) => {
+  const filteredPosts = blogPosts.filter((post: Post) => {
+    // Add Post type
     const matchesSearch = post.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
@@ -102,7 +103,7 @@ const Blog = () => {
                   {dayjs(post.date).format("MMMM D, YYYY")}
                 </time>
                 <p className="relative z-10 mt-2 text-sm md:px-4 text-neutral-500 dark:text-neutral-400 transition duration-300 ease-in-out group-hover:text-neutral-800 dark:group-hover:text-neutral-800 group-active:text-neutral-800 dark:group-active:text-neutral-800">
-                  {post.description}
+                  {post.excerpt}
                 </p>
                 <div
                   aria-hidden="true"

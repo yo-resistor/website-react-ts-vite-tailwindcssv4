@@ -1,0 +1,119 @@
+---
+title: Exploring Advanced React Patterns
+author: AI Roo
+date: 2024-05-07
+tags: ["React", "Advanced", "Patterns", "TypeScript"]
+excerpt: A look into some advanced React patterns like Higher-Order Components (HOCs) and Render Props, with TypeScript examples.
+---
+
+# Exploring Advanced React Patterns
+
+Welcome to a deeper dive into React! Once you're comfortable with components, state, and props, it's time to explore patterns that can make your code more reusable, maintainable, and powerful. Today, we'll touch upon Higher-Order Components (HOCs) and Render Props.
+
+## Higher-Order Components (HOCs)
+
+A Higher-Order Component is a function that takes a component and returns a new component. It's a pattern for reusing component logic.
+
+Here's a simple HOC that adds a `loading` prop to a component:
+
+```typescript
+import React, { useState, useEffect, ComponentType } from "react";
+
+interface WithLoadingProps {
+  loading: boolean;
+}
+
+// This HOC takes a component and adds a 'loading' prop
+function withLoading<P extends object>(
+  WrappedComponent: ComponentType<P & WithLoadingProps>
+) {
+  return function ComponentWithLoading(props: P) {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+      const timer = setTimeout(() => setIsLoading(false), 1500); // Simulate loading
+      return () => clearTimeout(timer);
+    }, []);
+
+    return <WrappedComponent {...(props as P)} loading={isLoading} />;
+  };
+}
+
+// Example usage:
+interface MyDataProps {
+  data?: string;
+  // loading prop will be injected by HOC
+}
+
+const MyDataDisplay: React.FC<MyDataProps & WithLoadingProps> = ({
+  data,
+  loading,
+}) => {
+  if (loading) {
+    return <p>Loading data...</p>;
+  }
+  return <div>Data: {data || "No data yet"}</div>;
+};
+
+export const MyDataDisplayWithLoading = withLoading(MyDataDisplay);
+
+// In your app:
+// <MyDataDisplayWithLoading data="Fetched Data!" />
+```
+
+HOCs are great for cross-cutting concerns like logging, data fetching, or adding context.
+
+## Render Props
+
+The term "render prop" refers to a technique for sharing code between React components using a prop whose value is a function. A component with a render prop takes a function that returns a React element and calls it instead of implementing its own rendering logic.
+
+```typescript
+import React, { useState, ReactNode } from "react";
+
+interface MouseTrackerProps {
+  render: (state: { x: number; y: number }) => ReactNode;
+}
+
+const MouseTracker: React.FC<MouseTrackerProps> = ({ render }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    setPosition({
+      x: event.clientX,
+      y: event.clientY,
+    });
+  };
+
+  return (
+    <div
+      style={{ height: "300px", border: "1px solid #ccc" }}
+      onMouseMove={handleMouseMove}
+    >
+      {/* Call the render prop with the current mouse position */}
+      {render(position)}
+    </div>
+  );
+};
+
+// Example Usage:
+const AppWithMouseTracker = () => (
+  <div>
+    <h1>Move the mouse around!</h1>
+    <MouseTracker
+      render={({ x, y }) => (
+        <p>
+          The current mouse position is ({x}, {y})
+        </p>
+      )}
+    />
+  </div>
+);
+
+export default AppWithMouseTracker;
+```
+
+Render props provide great flexibility and are often preferred over HOCs for certain use cases because they are more explicit.
+
+## Conclusion
+
+Both HOCs and Render Props are powerful patterns in React. Understanding when and how to use them can significantly improve your component architecture. Modern React also heavily utilizes Hooks, which can often solve similar problems in a more direct and composable way. We'll explore Hooks in a future post!

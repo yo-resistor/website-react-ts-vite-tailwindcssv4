@@ -1,41 +1,72 @@
 // src/data/posts.ts
-export interface BlogPostMeta {
-  title: string;
-  slug: string;
-  description: string;
-  tags: string[];
-  date: string;
+
+export interface Author {
+  name: string;
+  avatarUrl?: string; // Optional avatar URL
+  profileUrl?: string; // Optional link to author's profile
 }
 
-export const blogPosts: BlogPostMeta[] = [
+export interface Post {
+  slug: string; // Unique identifier, used for URL and finding the MDX file
+  title: string;
+  date: string; // ISO 8601 date string (e.g., "2024-05-06T10:00:00Z")
+  author: Author;
+  tags: string[];
+  excerpt: string; // A short summary of the post
+  readingTime: string; // E.g., "5 min read"
+  commentsCount: number;
+  imageUrl?: string; // Optional cover image for the post
+  mdxFile: string; // Path to the mdx file, relative to a base content directory
+}
+
+export const posts: Post[] = [
   {
-    title: "First Post",
-    slug: "first-post",
-    description: "My first blog post.",
-    tags: ["general"],
-    date: "2024-01-01",
+    slug: "example-modern-post",
+    title: "My Example Modern Blog Post with MDX",
+    date: "2024-05-06T10:00:00Z", // Example: May 6, 2024
+    author: {
+      name: "AI Roo",
+      avatarUrl: "https://via.placeholder.com/40", // Replace with actual avatar
+      profileUrl: "#",
+    },
+    tags: ["React", "TypeScript", "TailwindCSS", "MDX"],
+    excerpt:
+      "A deep dive into creating modern blog posts using MDX, React, and Tailwind CSS v4, featuring text, images, and code snippets.",
+    readingTime: "7 min read",
+    commentsCount: 12,
+    imageUrl: "https://via.placeholder.com/800x400?text=Blog+Post+Cover", // Replace with actual image
+    mdxFile: "example-modern-post.mdx", // Assumes posts are in src/content/posts/
   },
   {
-    title: "Tailwind CSS Guide",
-    slug: "tailwind-guide",
-    description: "A guide to Tailwind CSS v4.",
-    tags: ["frontend", "tailwind"],
-    date: "2024-01-10",
+    slug: "second-example-post",
+    title: "Exploring Advanced React Patterns",
+    date: "2024-05-07T10:00:00Z", // Example: May 7, 2024
+    author: {
+      name: "AI Roo",
+      avatarUrl: "https://via.placeholder.com/40", // Replace with actual avatar
+      profileUrl: "#",
+    },
+    tags: ["React", "Advanced", "Patterns", "TypeScript"],
+    excerpt:
+      "A look into some advanced React patterns like Higher-Order Components (HOCs) and Render Props, with TypeScript examples.",
+    readingTime: "9 min read", // Estimated reading time
+    commentsCount: 5, // Mock comments count
+    imageUrl: "https://via.placeholder.com/800x400?text=Advanced+React", // Replace with actual image
+    mdxFile: "second-example-post.mdx", // Path to the mdx file
   },
-  {
-    title: "How to Install PyTorch in a Miniconda Environment",
-    slug: "install-pytorch-miniconda",
-    description:
-      "A step-by-step guide to installing PyTorch in a Miniconda environment.",
-    tags: ["machine learning", "pytorch"],
-    date: "2024-01-15",
-  },
-  {
-    title: "Make Your Code Snippets Look Like VSCode",
-    slug: "code-snippets-look-like-vscode",
-    description:
-      "A quick guide to making your blog code blocks feel like you're still in your favorite editor.",
-    tags: ["frontend", "tailwind"],
-    date: "2024-05-02",
-  },
+  // Add more mock posts here
 ];
+
+// Helper function to get a post by slug
+export const getPostBySlug = (slug: string): Post | undefined => {
+  return posts.find((post) => post.slug === slug);
+};
+
+// Helper function to format date (optional, can be done in component)
+export const formatDate = (dateString: string): string => {
+  return new Date(dateString).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+};

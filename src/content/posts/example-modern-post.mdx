@@ -1,0 +1,65 @@
+---
+title: My Example Modern Blog Post with MDX
+author: AI Roo
+date: 2024-05-06
+tags: ["React", "TypeScript", "TailwindCSS", "MDX"]
+excerpt: A deep dive into creating modern blog posts using MDX, React, and Tailwind CSS v4.
+---
+
+# My Example Modern Blog Post
+
+This is an example of a blog post written in MDX. It demonstrates how to include various elements like paragraphs, headings, lists, images, and code snippets.
+
+## Introduction to MDX
+
+MDX allows you to use JSX in your markdown content. This is incredibly powerful because you can embed React components directly within your posts. Imagine interactive charts, custom callouts, or anything else you can build with React!
+
+Here's a list of things you can do:
+
+- Write standard Markdown.
+- Embed React components.
+- Use frontmatter for metadata.
+
+## Including Figures
+
+You can include images using standard Markdown syntax. For more control, you could create a custom `<Figure>` React component and use it here.
+
+![Placeholder Image Alt Text](https://via.placeholder.com/600x300?text=Sample+Figure)
+_Caption for the figure above._
+
+Make sure your images are responsive and optimized for the web.
+
+## Code Snippets
+
+Displaying code is crucial for technical blogs. Below is an example of a JavaScript code snippet. We'll use a custom `CodeBlock` component (which MDX can be configured to use for `pre` tags) to style it.
+
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+greet("Developer");
+
+// This is a comment within the code block
+const sum = (a, b) => a + b;
+```
+
+And here's a Python snippet:
+
+```python
+def fibonacci(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+fibonacci(100)
+```
+
+The styling should aim for a clean, VS Code-like appearance.
+
+## Conclusion
+
+MDX offers a flexible and powerful way to create rich content for your blog. Combined with React and Tailwind CSS, you can build beautiful and interactive blog posts.
+Remember to ensure your design is responsive and accessible!
