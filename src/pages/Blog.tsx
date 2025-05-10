@@ -1,22 +1,36 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"; // Import useEffect
+import { Link, useSearchParams } from "react-router-dom"; // Import useSearchParams
 import { posts as blogPosts, Post } from "../data/posts.ts"; // Import Post type and alias posts
 import dayjs from "dayjs";
 
 const Blog = () => {
+  const [searchParams] = useSearchParams(); // Get search params
+  const initialTag = searchParams.get("tag"); // Read initial tag from URL
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const allTags = Array.from(
     new Set(blogPosts.flatMap((post: Post) => post.tags)) // Add Post type
   ).sort();
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  // Initialize state from URL param
+  const [selectedTag, setSelectedTag] = useState<string | null>(initialTag);
+
+  // Update selectedTag if URL search params change
+  useEffect(() => {
+    setSelectedTag(searchParams.get("tag"));
+  }, [searchParams]);
 
   const filteredPosts = blogPosts.filter((post: Post) => {
     // Add Post type
     const matchesSearch = post.title
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
-    const matchesTag = selectedTag ? post.tags.includes(selectedTag) : true;
+    // Compare selectedTag (slug from URL) with slugified versions of post tags
+    const matchesTag = selectedTag
+      ? post.tags.some(
+          (tag) => tag.toLowerCase().replace(/\s+/g, "-") === selectedTag
+        )
+      : true;
     return matchesSearch && matchesTag;
   });
 
@@ -48,38 +62,44 @@ const Blog = () => {
         className="w-full px-4 py-2 mb-6 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
       />
       <div className="max-sm:hidden flex flex-wrap gap-3 mb-6">
-        <button
-          onClick={() => setSelectedTag(null)}
+        {/* "All" button becomes a Link to /blog */}
+        <Link
+          to="/blog"
           className={`px-3 py-1 rounded-full text-sm ${
             selectedTag === null
               ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold"
-              : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300"
+              : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-4"
           }`}
         >
           All
-        </button>
-        {allTags.map((tag) => (
-          <button
-            key={tag}
-            onClick={() => setSelectedTag(tag)}
-            className={`px-3 py-1 rounded-full text-sm capitalize ${
-              selectedTag === tag
-                ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold"
-                : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300"
-            }`}
-          >
-            {tag}
-          </button>
-        ))}
+        </Link>
+        {allTags.map((tag) => {
+          const tagSlug = tag.toLowerCase().replace(/\s+/g, "-");
+          const isActive = selectedTag === tagSlug; // Check against slugified tag from URL
+          return (
+            // Tag buttons become Links to /blog?tag=...
+            <Link
+              key={tag}
+              to={`/blog?tag=${encodeURIComponent(tagSlug)}`}
+              className={`px-3 py-1 rounded-full text-sm capitalize ${
+                isActive
+                  ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold"
+                  : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-4"
+              }`}
+            >
+              {tag}
+            </Link>
+          );
+        })}
       </div>
       <div className="mt-4 md:border-l-2 md:border-neutral-300 md:dark:border-neutral-500 md:pl-6 mb-10">
         <div className="flex max-w-3xl flex-col space-y-10">
           {filteredPosts.map((post) => (
-            <article className="md:grid md:grid-cols-4 md:items-baseline">
-              <div
-                key={post.slug}
-                className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.97]"
-              >
+            <article
+              key={post.slug}
+              className="md:grid md:grid-cols-4 md:items-baseline"
+            >
+              <div className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.97]">
                 <h2 className="text-base font-semibold tracking-tight">
                   <div className="absolute -inset-y-6 -inset-x-8 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 group-active:scale-90 max-md:group-active:scale-95 lg:group-active:scale-95 group-active:opacity-100 rounded-xl"></div>
                   <Link

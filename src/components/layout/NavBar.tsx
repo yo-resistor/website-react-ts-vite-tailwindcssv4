@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full bg-white-bg-1 dark:bg-dark-bg-3 backdrop-blur-md shadow-md z-50 font-mono">
+      <nav className="fixed top-0 left-0 w-full bg-white-bg-1 dark:bg-dark-bg-3 backdrop-blur-md shadow-md z-50 font-mono border-t border-neutral-300 dark:border-neutral-700">
         <div className="mx-auto flex items-center justify-between py-2 px-4 md:px-14 sm:px-8">
           {/* Logo / Home Link */}
           <Link to="/">

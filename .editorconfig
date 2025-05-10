@@ -1,0 +1,7 @@
+root = true
+
+
+# Override for MDX files
+[**/*.mdx]
+indent_style = space
+indent_size = 4

@@ -136,8 +136,44 @@ const BlogPostPage: React.FC = () => {
     );
   };
 
+  // Define styled components for MDX headers
+  const StyledH1 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1 className="text-3xl font-bold mt-8 mb-4 dark:text-white" {...props} />
+  );
+  const StyledH2 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      className="text-2xl font-semibold mt-6 mb-3 dark:text-white"
+      {...props}
+    />
+  );
+  const StyledH3 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      className="text-xl font-semibold mt-4 mb-2 dark:text-white"
+      {...props}
+    />
+  );
+  const StyledUl = (props: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className="list-disc pl-6 my-4" {...props} /> // Added padding-left and vertical margin
+  );
+  const StyledLi = (props: React.HTMLAttributes<HTMLLIElement>) => (
+    <li className="mb-2" {...props} /> // Added margin-bottom
+  );
+  // Add more (h4, p, a, etc.) if needed
+
+  // Combine components for MDXProvider
+  const mdxComponents = {
+    pre: CodeBlock,
+    h1: StyledH1,
+    h2: StyledH2,
+    h3: StyledH3,
+    ul: StyledUl,
+    li: StyledLi,
+    // You can map other elements like p, a here if needed
+  };
+
   return (
     <div className="container mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8 text-gray-900 dark:text-gray-100">
+      {/* Re-add prose classes for default styling + image border removal */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert mx-auto">
         {/* Post Header */}
         <header className="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
@@ -175,18 +211,23 @@ const BlogPostPage: React.FC = () => {
               {post.tags.map((tag) => (
                 <Link
                   key={tag}
-                  to={`/blog/tags/${tag.toLowerCase().replace(/\s+/g, "-")}`} // Example tag link, slugified
+                  // Update link to use query parameter on the main blog page
+                  to={`/blog?tag=${encodeURIComponent(
+                    tag.toLowerCase().replace(/\s+/g, "-")
+                  )}`}
                   className="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2.5 py-1 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
                 >
                   {tag}
                 </Link>
+                // TODO: When I click the tag, it will reroute me to tag sorted blog page. This should be done in Blog.tsx
               ))}
             </div>
           )}
         </header>
 
         {/* MDX Content */}
-        <MDXProvider components={{ pre: CodeBlock }}>
+        {/* Pass the full components map to MDXProvider */}
+        <MDXProvider components={mdxComponents}>
           <Suspense
             fallback={
               <div className="text-center py-8">Loading content...</div>

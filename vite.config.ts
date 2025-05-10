@@ -5,5 +5,9 @@ import mdx from "@mdx-js/rollup";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [tailwindcss(), react(), mdx()],
+  plugins: [
+    tailwindcss(),
+    react(),
+    mdx({ providerImportSource: "@mdx-js/react" }),
+  ],
 });
