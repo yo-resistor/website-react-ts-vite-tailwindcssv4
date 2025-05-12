@@ -188,18 +188,18 @@ const BlogPostPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-gray-900 dark:text-gray-100">
+    <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-gray-900 dark:text-gray-100">
       {/* Re-add prose classes for default styling + image border removal */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert mx-auto">
         {/* Post Header */}
         <header className="mb-8 border-b pb-6">
-          {/* {post.imageUrl && (
+          {post.imageUrl && (
             <img
               src={post.imageUrl}
               alt={`${post.title} cover image`}
               className="w-full h-auto max-h-96 object-cover rounded-lg mb-6"
             />
-          )} */}
+          )}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 text-neutral-800 dark:text-neutral-200">
             {/* Title text color: neutral-200 dark, neutral-800 light */}
             {post.title}
