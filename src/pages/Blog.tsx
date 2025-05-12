@@ -56,6 +56,7 @@ const Blog = () => {
       </div>
       <input
         type="text"
+        id="search-tag-form"
         placeholder="Search blog posts..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
