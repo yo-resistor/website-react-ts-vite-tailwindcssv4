@@ -48,6 +48,14 @@ const BlogPostPage: React.FC = () => {
   );
   const [error, setError] = useState<string | null>(null);
 
+  // Use import.meta.glob to get all MDX modules
+  // The key will be like '../content/posts/your-post-name.mdx'
+  // The value is a function that returns a Promise for the module
+  const mdxModules = import.meta.glob("../content/posts/*.mdx") as Record<
+    string,
+    () => Promise<{ default: React.ComponentType }>
+  >;
+
   useEffect(() => {
     if (!slug) {
       setError("No post slug provided.");
@@ -67,14 +75,22 @@ const BlogPostPage: React.FC = () => {
     setPost(currentPost);
     setError(null);
 
-    // Dynamically import the MDX file
+    // Dynamically import the MDX file using the glob result
     const importMdx = async () => {
       try {
-        // Vite's dynamic import needs a somewhat static path structure.
-        const mdxModule = await import(
-          /* @vite-ignore */ `../content/posts/${currentPost.mdxFile}`
-        );
-        setMdxContent(() => mdxModule.default); // .default usually holds the MDX component
+        const modulePath = `../content/posts/${currentPost.mdxFile}`;
+        const moduleLoader = mdxModules[modulePath];
+
+        if (moduleLoader) {
+          const mdxModule = await moduleLoader();
+          setMdxContent(() => mdxModule.default); // .default usually holds the MDX component
+        } else {
+          console.error(`MDX module not found for path: ${modulePath}`);
+          setError(
+            `Could not find blog post content for: ${currentPost.title}`
+          );
+          setMdxContent(null);
+        }
       } catch (e) {
         console.error("Failed to load MDX content:", e);
         setError("Could not load blog post content.");
@@ -172,18 +188,18 @@ const BlogPostPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8 text-gray-900 dark:text-gray-100">
+    <div className="container mx-auto max-w-3xl px-4 py-8 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-gray-900 dark:text-gray-100">
       {/* Re-add prose classes for default styling + image border removal */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert mx-auto">
         {/* Post Header */}
         <header className="mb-8 border-b pb-6">
-          {post.imageUrl && (
+          {/* {post.imageUrl && (
             <img
               src={post.imageUrl}
               alt={`${post.title} cover image`}
               className="w-full h-auto max-h-96 object-cover rounded-lg mb-6"
             />
-          )}
+          )} */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 text-neutral-800 dark:text-neutral-200">
             {/* Title text color: neutral-200 dark, neutral-800 light */}
             {post.title}

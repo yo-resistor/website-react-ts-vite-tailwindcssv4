@@ -59,7 +59,7 @@ const Blog = () => {
         placeholder="Search blog posts..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="w-full px-4 py-2 mb-6 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
+        className="w-full px-4 py-2 mb-6 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white-bg-1 dark:bg-dark-bg-3 text-neutral-800 dark:text-white focus:bg-white dark:focus:bg-dark-bg-4"
       />
       <div className="max-sm:hidden flex flex-wrap gap-3 mb-6">
         {/* "All" button becomes a Link to /blog */}
