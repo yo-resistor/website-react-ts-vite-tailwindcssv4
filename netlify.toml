@@ -1,0 +1,8 @@
+[[headers]]
+  for = "/*" # Apply this rule to all paths
+  [headers.values]
+    # Define a Permissions-Policy.
+    # We're listing common features and explicitly disabling them (or setting to self/none).
+    # Crucially, we are omitting 'browsing-topics' or setting it to '()'
+    # to prevent the "Unrecognized feature" warning.
+    Permissions-Policy = "accelerometer=(), autoplay=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=(), browsing-topics=()"
