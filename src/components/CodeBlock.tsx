@@ -161,12 +161,13 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "bash" }) => {
         wrapLongLines={true} // Restore line wrapping
         customStyle={{
           margin: 0,
-          padding: "1.5rem 1.25rem 1.5rem 1.25rem", // Restore correct padding
-          backgroundColor: "transparent",
+          padding: "1.5rem 1.25rem 1.5em 1.25rem", // Ensure correct padding
+          backgroundColor: isCurrentlyDark ? "#1e1e1e" : "#f7f7f7 ", // Explicit background
           fontSize: "0.9rem",
           lineHeight: 1.5,
           // overflowX removed
           borderRadius: "0.5rem", // Match parent's rounded-lg
+          fontWeight: isCurrentlyDark ? "normal" : "100", // Added for font thickness in light mode
         }}
         lineNumberStyle={{
           color: "#6c6c6c",

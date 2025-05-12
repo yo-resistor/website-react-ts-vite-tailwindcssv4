@@ -67,8 +67,8 @@ const Blog = () => {
           to="/blog"
           className={`px-3 py-1 rounded-full text-sm ${
             selectedTag === null
-              ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold"
-              : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-4"
+              ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 text-white font-semibold"
+              : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-6 transition-colors"
           }`}
         >
           All
@@ -83,8 +83,8 @@ const Blog = () => {
               to={`/blog?tag=${encodeURIComponent(tagSlug)}`}
               className={`px-3 py-1 rounded-full text-sm capitalize ${
                 isActive
-                  ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-semibold"
-                  : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-4"
+                  ? "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-400 text-white font-semibold"
+                  : "bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-6 transition-colors"
               }`}
             >
               {tag}
@@ -101,7 +101,7 @@ const Blog = () => {
             >
               <div className="md:col-span-3 group relative flex flex-col items-start transition-all duration-300 ease-in-out active:scale-[0.97]">
                 <h2 className="text-base font-semibold tracking-tight">
-                  <div className="absolute -inset-y-6 -inset-x-8 z-0 dark:bg-neutral-100 bg-white opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 group-active:scale-90 max-md:group-active:scale-95 lg:group-active:scale-95 group-active:opacity-100 rounded-xl"></div>
+                  <div className="absolute -inset-y-6 -inset-x-8 z-0 dark:bg-neutral-100 bg-[#fcfcfc] opacity-0 transition duration-300 ease-in-out group-hover:scale-90 max-md:group-hover:scale-95 lg:group-hover:scale-95 group-hover:opacity-100 group-active:scale-90 max-md:group-active:scale-95 lg:group-active:scale-95 group-active:opacity-100 rounded-xl"></div>
                   <Link
                     to={`/blog/${post.slug}`}
                     className="group w-full py-4 rounded-xl"

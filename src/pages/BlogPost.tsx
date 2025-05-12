@@ -176,7 +176,7 @@ const BlogPostPage: React.FC = () => {
       {/* Re-add prose classes for default styling + image border removal */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert mx-auto">
         {/* Post Header */}
-        <header className="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
+        <header className="mb-8 border-b pb-6">
           {post.imageUrl && (
             <img
               src={post.imageUrl}
@@ -184,7 +184,8 @@ const BlogPostPage: React.FC = () => {
               className="w-full h-auto max-h-96 object-cover rounded-lg mb-6"
             />
           )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 text-gray-900 dark:text-white">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 text-neutral-800 dark:text-neutral-200">
+            {/* Title text color: neutral-200 dark, neutral-800 light */}
             {post.title}
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
@@ -215,7 +216,7 @@ const BlogPostPage: React.FC = () => {
                   to={`/blog?tag=${encodeURIComponent(
                     tag.toLowerCase().replace(/\s+/g, "-")
                   )}`}
-                  className="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2.5 py-1 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                  className="text-sm px-3 py-1 rounded-full bg-neutral-200 dark:bg-dark-bg-5 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-dark-bg-6 transition-colors"
                 >
                   {tag}
                 </Link>
