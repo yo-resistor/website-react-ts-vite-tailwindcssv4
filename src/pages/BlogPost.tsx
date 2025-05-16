@@ -99,7 +99,7 @@ const BlogPostPage: React.FC = () => {
     };
 
     importMdx();
-  }, [slug]);
+  }, [slug, mdxModules]);
 
   if (error) {
     return (
