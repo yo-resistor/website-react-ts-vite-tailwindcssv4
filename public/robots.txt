@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Optional: Specify the path to your sitemap
+# Sitemap: https://yourwebsiteurl.com/sitemap.xml
