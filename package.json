@@ -23,7 +23,7 @@
     "prismjs": "^1.30.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-helmet-async": "^2.0.5",
+    "react-helmet-async": "latest",
     "react-router-dom": "^7.3.0",
     "react-syntax-highlighter": "^15.6.1",
     "tailwindcss": "^4.0.13"
