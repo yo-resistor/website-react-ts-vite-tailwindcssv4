@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // Import useEffect
 import { Link, useSearchParams } from "react-router-dom"; // Import useSearchParams
-import { posts as blogPosts, Post } from "../data/posts.ts"; // Import Post type and alias posts
+import { posts as blogPosts, Post } from "../data/posts.js"; // Import Post type and alias posts
 import dayjs from "dayjs";
 
 const Blog = () => {
