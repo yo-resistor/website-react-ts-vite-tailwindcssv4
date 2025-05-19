@@ -116,7 +116,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "bash" }) => {
 
   return (
     <div
-      className="group relative my-4 rounded-lg overflow-hidden shadow-lg focus:outline-none"
+      className="group relative my-8 rounded-lg overflow-hidden shadow-lg focus:outline-none"
       tabIndex={0}
     >
       {/* Top-right corner container for buttons */}
@@ -161,7 +161,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "bash" }) => {
         wrapLongLines={true} // Restore line wrapping
         customStyle={{
           margin: 0,
-          padding: "1.25rem 1.25rem 1.5em 1.25rem", // Ensure correct padding
+          padding: "1.5rem 1.25rem 1.5em 1.25rem", // Ensure correct padding
           backgroundColor: isCurrentlyDark ? "#1e1e1e" : "#f7f7f7 ", // Explicit background
           fontSize: "0.9rem",
           lineHeight: 1.5,

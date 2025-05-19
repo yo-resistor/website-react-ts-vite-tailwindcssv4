@@ -2,10 +2,8 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useParams, Link } from "react-router-dom"; // Assuming you use React Router
 import { MDXProvider } from "@mdx-js/react"; // Import MDXProvider
-import { getPostBySlug, Post, formatDate } from "../data/posts";
+import { getPostBySlug, Post, formatDate, Author } from "../data/posts";
 import CodeBlock from "../components/CodeBlock";
-import { Calendar, Timer, Tag } from "lucide-react";
-import { Helmet } from "react-helmet-async"; // Import Helmet
 
 // Placeholder icons - consider replacing with actual icon components (e.g., from react-icons or your own SVGs)
 // Added className prop to allow styling
@@ -13,28 +11,31 @@ interface PlaceholderIconProps {
   className?: string;
 }
 
-const IconSize = 16;
 const FaCalendarAlt: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="calendar icon" className={className}>
-    <Calendar size={IconSize} />
+    📅
+  </span>
+);
+const FaUser: React.FC<PlaceholderIconProps> = ({ className }) => (
+  <span role="img" aria-label="user icon" className={className}>
+    👤
   </span>
 );
 const FaClock: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="clock icon" className={className}>
-    <Timer size={IconSize} />
+    🕒
   </span>
 );
 const FaTags: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="tags icon" className={className}>
-    <Tag size={IconSize} />
+    🏷️
   </span>
 );
-// Comment function is not activated yet
-// const FaComments: React.FC<PlaceholderIconProps> = ({ className }) => (
-//   <span role="img" aria-label="comments icon" className={className}>
-//     <MessageSquare size={IconSize} />
-//   </span>
-// );
+const FaComments: React.FC<PlaceholderIconProps> = ({ className }) => (
+  <span role="img" aria-label="comments icon" className={className}>
+    💬
+  </span>
+);
 
 // interface BlogPostPageProps {} // Remove empty interface
 
@@ -102,7 +103,7 @@ const BlogPostPage: React.FC = () => {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-red-500 dark:text-red-400">
+      <div className="container mx-auto px-4 py-8 text-red-500 dark:text-red-400">
         {error}
       </div>
     );
@@ -110,36 +111,68 @@ const BlogPostPage: React.FC = () => {
 
   if (!post || !MdxContent) {
     return (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-center text-neutral-800 dark:text-neutral-300">
+      <div className="container mx-auto px-4 py-8 text-center text-gray-700 dark:text-gray-300">
         Loading post...
       </div>
     );
   }
 
+  const AuthorInfo: React.FC<{ author: Author }> = ({ author }) => {
+    const [avatarError, setAvatarError] = useState(false); // State to track avatar loading error
+
+    useEffect(() => {
+      setAvatarError(false); // Reset error state when author changes
+    }, [author]);
+
+    return (
+      <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+        {author.avatarUrl && !avatarError ? ( // Conditionally render img
+          <img
+            src={author.avatarUrl}
+            alt={author.name}
+            className="w-6 h-6 rounded-full object-cover" // Added object-cover
+            onError={() => setAvatarError(true)} // Set error state on load failure
+          />
+        ) : (
+          <FaUser className="w-6 h-6" /> // Show user icon if no avatar URL or error
+        )}
+        {author.profileUrl ? (
+          <a
+            href={author.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          >
+            {author.name}
+          </a>
+        ) : (
+          <span>{author.name}</span>
+        )}
+      </div>
+    );
+  };
+
   // Define styled components for MDX headers
   const StyledH1 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1
-      className="text-3xl font-bold mt-8 mb-4 text-neutral-800 dark:text-neutral-300 hidden"
-      {...props}
-    />
+    <h1 className="text-3xl font-bold mt-8 mb-4 dark:text-white" {...props} />
   );
   const StyledH2 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="text-2xl font-semibold mt-6 mb-4 text-neutral-800 dark:text-neutral-300"
+      className="text-2xl font-semibold mt-6 mb-3 dark:text-white"
       {...props}
     />
   );
   const StyledH3 = (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="text-xl font-semibold mt-4 mb-4 text-neutral-800 dark:text-neutral-300"
+      className="text-xl font-semibold mt-4 mb-2 dark:text-white"
       {...props}
     />
   );
   const StyledUl = (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="list-disc pl-6 my-2" {...props} /> // Added padding-left and vertical margin
+    <ul className="list-disc pl-6 my-4" {...props} /> // Added padding-left and vertical margin
   );
   const StyledLi = (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="mb-1" {...props} /> // Added margin-bottom
+    <li className="mb-2" {...props} /> // Added margin-bottom
   );
   // Add more (h4, p, a, etc.) if needed
 
@@ -155,88 +188,11 @@ const BlogPostPage: React.FC = () => {
   };
 
   return (
-    <div
-      id="main-content"
-      className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-gray-900 dark:text-gray-100"
-    >
-      {post && (
-        <Helmet>
-          <title>{post.title} - Yunsik Ohm</title>
-          <meta name="description" content={post.excerpt} />
-          {/* Open Graph */}
-          <meta property="og:title" content={post.title} />
-          <meta property="og:description" content={post.excerpt} />
-          {post.imageUrl && (
-            <meta property="og:image" content={post.imageUrl} />
-          )}
-          <meta
-            property="og:url"
-            content={`https://yourwebsiteurl.com/blog/${post.slug}`}
-          />{" "}
-          {/* Replace with your website URL */}
-          <meta property="og:type" content="article" />
-          <meta property="article:published_time" content={post.date} />
-          {/* Add modified time if available in your post data */}
-          {/* <meta property="article:modified_time" content={post.modifiedDate} /> */}
-          {post.tags &&
-            post.tags.map((tag) => (
-              <meta property="article:tag" content={tag} key={tag} />
-            ))}
-          {/* Twitter Card */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@yourtwitterhandle" />{" "}
-          {/* Replace with your Twitter handle */}
-          <meta name="twitter:creator" content="@yourtwitterhandle" />{" "}
-          {/* Replace with your Twitter handle */}
-          <meta name="twitter:title" content={post.title} />
-          <meta name="twitter:description" content={post.excerpt} />
-          {post.imageUrl && (
-            <meta name="twitter:image" content={post.imageUrl} />
-          )}
-          {/* JSON-LD Structured Data */}
-          <script type="application/ld+json">
-            {`
-              {
-                "@context": "https://schema.org",
-                "@type": "Article",
-                "headline": "${post.title.replace(/"/g, '\\"')}",
-                "description": "${post.excerpt.replace(/"/g, '\\"')}",
-                ${post.imageUrl ? `"image": ["${post.imageUrl}"],` : ""}
-                "datePublished": "${post.date}",
-                ${/* Add dateModified if available */ ""}
-                ${/* "dateModified": "${post.modifiedDate}", */ ""}
-                "author": {
-                  "@type": "Person",
-                  "name": "Yunsik Ohm" {/* Replace with your name */}
-                },
-                "publisher": {
-                  "@type": "Organization",
-                  "name": "Yunsik Ohm's Portfolio", {/* Replace with your website name */}
-                  "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://yourwebsiteurl.com/logo_dark_bg.svg" {/* Replace with your website logo URL */}
-                  }
-                },
-                "mainEntityOfPage": {
-                  "@type": "WebPage",
-                  "@id": "https://yourwebsiteurl.com/blog/${
-                    post.slug
-                  }" {/* Replace with your website URL */}
-                }
-                ${
-                  post.tags && post.tags.length > 0
-                    ? `, "keywords": "${post.tags.join(", ")}"`
-                    : ""
-                }
-              }
-            `}
-          </script>
-        </Helmet>
-      )}
+    <div className="container mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-gray-900 dark:text-gray-100">
       {/* Re-add prose classes for default styling + image border removal */}
       <article className="prose prose-sm sm:prose lg:prose-lg dark:prose-invert mx-auto">
         {/* Post Header */}
-        <header className="mb-6">
+        <header className="mb-8 border-b pb-6">
           {post.imageUrl && (
             <img
               src={post.imageUrl}
@@ -244,28 +200,27 @@ const BlogPostPage: React.FC = () => {
               className="w-full h-auto max-h-96 object-cover rounded-lg mb-6"
             />
           )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-neutral-800 dark:text-neutral-200">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 text-neutral-800 dark:text-neutral-200">
             {/* Title text color: neutral-200 dark, neutral-800 light */}
             {post.title}
           </h1>
-          <p className="text-base text-neutral-500 dark:text-neutral-400 mb-4">
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
             {post.excerpt}
           </p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-500 dark:text-neutral-400">
-            <div className="flex items-center space-x-2.5">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400">
+            <AuthorInfo author={post.author} />
+            <div className="flex items-center space-x-1">
               <FaCalendarAlt />
-              <span>
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
-              </span>
+              <time dateTime={post.date}>{formatDate(post.date)}</time>
             </div>
-            <div className="flex items-center space-x-1.5">
+            <div className="flex items-center space-x-1">
               <FaClock />
               <span>{post.readingTime}</span>
             </div>
-            {/* <div className="flex items-center space-x-1.5">
+            <div className="flex items-center space-x-1">
               <FaComments />
               <span>{post.commentsCount} comments</span>
-            </div> */}
+            </div>
           </div>
           {post.tags && post.tags.length > 0 && (
             <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -281,6 +236,7 @@ const BlogPostPage: React.FC = () => {
                 >
                   {tag}
                 </Link>
+                // TODO: When I click the tag, it will reroute me to tag sorted blog page. This should be done in Blog.tsx
               ))}
             </div>
           )}
@@ -291,9 +247,7 @@ const BlogPostPage: React.FC = () => {
         <MDXProvider components={mdxComponents}>
           <Suspense
             fallback={
-              <div className="px-4 sm:px-6 lg:px-8 max-sm:mt-20 mt-30 text-neutral-800 dark:text-neutral-300">
-                Loading content...
-              </div>
+              <div className="text-center py-8">Loading content...</div>
             }
           >
             {MdxContent && <MdxContent />}
@@ -301,10 +255,10 @@ const BlogPostPage: React.FC = () => {
         </MDXProvider>
 
         {/* Footer actions like "Back to Blog" or social sharing could go here */}
-        <footer className="mt-12 pt-8 mb-10 border-t border-gray-200 dark:border-gray-700 text-center">
+        <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700 text-center">
           <Link
             to="/blog"
-            className="text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400 hover:underline"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
           >
             ← Back to all posts
           </Link>

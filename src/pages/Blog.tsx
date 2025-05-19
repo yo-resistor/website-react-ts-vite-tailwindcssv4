@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // Import useEffect
 import { Link, useSearchParams } from "react-router-dom"; // Import useSearchParams
-import { posts as blogPosts, Post } from "../data/posts.js"; // Import Post type and alias posts
+import { posts as blogPosts, Post } from "../data/posts.ts"; // Import Post type and alias posts
 import dayjs from "dayjs";
 
 const Blog = () => {
@@ -35,13 +35,10 @@ const Blog = () => {
   });
 
   return (
-    <main
-      id="main-content"
-      className="max-[200px]:hidden max-w-3xl lg:max-w-5xl w-full h-full min-h-screen flex flex-col bg-white-bg-1 dark:bg-dark-bg-3 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40"
-    >
-      <p className="max-sm:mt-30 mt-40 mb-6 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
+    <main className="max-[200px]:hidden max-w-3xl lg:max-w-5xl w-full h-full min-h-screen flex flex-col bg-white-bg-1 dark:bg-dark-bg-3 max-sm:px-10 sm:max-lg:px-20 lg:max-2k:px-30 2k:px-40">
+      <h2 className="max-sm:mt-20 mt-30 mb-6 font-mono text-base text-left text-neutral-800 dark:text-neutral-300">
         Writing about
-      </p>
+      </h2>
       <h1 className="mb-6 font-sans text-5xl max-sm:text-4xl font-bold text-blue-600 dark:text-blue-500">
         My Journey
       </h1>

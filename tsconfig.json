@@ -1,11 +1,10 @@
 {
-  "files": ["generate-sitemap.ts"],
+  "files": [],
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["vite/client", "react", "react-dom"],
-    "skipLibCheck": true
+    "types": ["vite/client", "react", "react-dom"]
   }
 }
