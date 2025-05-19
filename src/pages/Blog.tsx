@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"; // Import useEffect
 import { Link, useSearchParams } from "react-router-dom"; // Import useSearchParams
 import { posts as blogPosts, Post } from "../data/posts.ts"; // Import Post type and alias posts
+import { MoveRight } from "lucide-react";
 import dayjs from "dayjs";
 
 const Blog = () => {
@@ -128,9 +129,12 @@ const Blog = () => {
                 </p>
                 <div
                   aria-hidden="true"
-                  className="relative z-10 mt-2 md:px-4 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline group-active:underline"
+                  className="relative z-10 mt-2 md:px-4 flex items-center text-sm font-medium text-teal-600 dark:text-teal-500 transition duration-300 ease-in-out group-hover:underline group-active:underline font-mono gap-x-2"
                 >
-                  Read article →
+                  <span>Read article</span>
+                  <span>
+                    <MoveRight size={14} strokeWidth={2} />
+                  </span>
                 </div>
               </div>
               {/* Date for larger window */}

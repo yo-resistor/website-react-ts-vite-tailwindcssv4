@@ -3,7 +3,7 @@ import React, { useEffect, useState, Suspense } from "react";
 import { useParams, Link } from "react-router-dom"; // Assuming you use React Router
 import { MDXProvider } from "@mdx-js/react"; // Import MDXProvider
 import { getPostBySlug, Post, formatDate } from "../data/posts";
-import { Calendar, Timer, Tag } from "lucide-react";
+import { Calendar, Timer, Tag, MoveLeft } from "lucide-react";
 import CodeBlock from "../components/CodeBlock";
 
 // Placeholder icons - consider replacing with actual icon components (e.g., from react-icons or your own SVGs)
@@ -13,19 +13,20 @@ interface PlaceholderIconProps {
 }
 
 const IconSize = 16;
+const StrokeWidth = 2;
 const FaCalendarAlt: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="calendar icon" className={className}>
-    <Calendar size={IconSize} strokeWidth={1.5} />
+    <Calendar size={IconSize} strokeWidth={StrokeWidth} />
   </span>
 );
 const FaClock: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="clock icon" className={className}>
-    <Timer size={IconSize} strokeWidth={1.5} />
+    <Timer size={IconSize} strokeWidth={StrokeWidth} />
   </span>
 );
 const FaTags: React.FC<PlaceholderIconProps> = ({ className }) => (
   <span role="img" aria-label="tags icon" className={className}>
-    <Tag size={IconSize} strokeWidth={1.5} />
+    <Tag size={IconSize} strokeWidth={StrokeWidth} />
   </span>
 );
 // Comment function is not activated yet
@@ -204,11 +205,11 @@ const BlogPostPage: React.FC = () => {
               className="w-full h-auto max-h-96 object-cover rounded-lg mb-6"
             />
           )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-6 text-neutral-800 dark:text-neutral-200">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-8 text-neutral-800 dark:text-neutral-200">
             {/* Title text color: neutral-200 dark, neutral-800 light */}
             {post.title}
           </h1>
-          <p className="text-base text-neutral-500 dark:text-neutral-400 mb-4">
+          <p className="text-base text-neutral-500 dark:text-neutral-400 mb-4 font-mono">
             {post.excerpt}
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-neutral-500 dark:text-neutral-400">
@@ -226,7 +227,7 @@ const BlogPostPage: React.FC = () => {
             </div> */}
           </div>
           {post.tags && post.tags.length > 0 && (
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-neutral-500 dark:text-neutral-400">
+            <div className="mt-4 mb-8 flex flex-wrap items-center gap-2 text-neutral-500 dark:text-neutral-400">
               <FaTags />
               {post.tags.map((tag) => (
                 <Link
@@ -262,9 +263,12 @@ const BlogPostPage: React.FC = () => {
         <footer className="mt-12 pt-8 mb-10 border-t border-neutral-200 dark:border-neutral-700 text-center">
           <Link
             to="/blog"
-            className="font-mono text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400 hover:underline"
+            className="flex flex-row items-center justify-center font-mono text-blue-600 hover:text-blue-700 dark:text-blue-500 dark:hover:text-blue-400 hover:underline gap-x-3"
           >
-            ← Back to all posts
+            <span role="img" aria-label="arrow icon">
+              <MoveLeft size={IconSize} strokeWidth={StrokeWidth} />
+            </span>
+            <span>Back to all posts</span>
           </Link>
         </footer>
       </article>
