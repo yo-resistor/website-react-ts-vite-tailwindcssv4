@@ -34,7 +34,7 @@ const Contact = () => {
               name="name"
               required
               placeholder="Name"
-              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white w-full"
+              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white-bg-1 dark:bg-dark-bg-3 text-neutral-800 dark:text-neutral-100 focus:bg-white dark:focus:bg-dark-bg-4 w-full"
             />
           </div>
 
@@ -45,17 +45,17 @@ const Contact = () => {
               name="email"
               required
               placeholder="Email"
-              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
+              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white-bg-1 dark:bg-dark-bg-3 text-neutral-800 dark:text-neutral-100 focus:bg-white dark:focus:bg-dark-bg-4 w-full"
             />
           </div>
-          <div className="flex flex-col w-full">
+          <div className="flex flex-col">
             <textarea
               id="message"
               name="message"
               rows={5}
               required
               placeholder="Message"
-              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 rounded-md bg-white dark:bg-dark-bg-2 text-neutral-800 dark:text-white"
+              className="px-4 py-2 border border-neutral-300 dark:border-neutral-600 duration-200 rounded-md bg-white-bg-1 dark:bg-dark-bg-3 text-neutral-800 dark:text-neutral-100 focus:bg-white dark:focus:bg-dark-bg-4 w-full"
             ></textarea>
           </div>
           <button
